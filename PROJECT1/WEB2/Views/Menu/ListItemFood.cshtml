@@ -1,0 +1,10 @@
+﻿
+@{
+    Layout = "~/Views/Shared/LayoutPage.cshtml";
+    ViewBag.pages = "Menu";
+    Html.RenderPartial("_Partial/_PartialMenu");
+    if (ViewBag.error=="")
+    {
+        Html.RenderPartial("_Partial/_PartialReservation");
+    }
+}

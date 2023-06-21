@@ -1,0 +1,26 @@
+﻿
+@switch (ViewBag.pages)
+{
+    case "SignUp":
+        Html.RenderPartial("_Partial/_PartialSignup");
+        break;
+    case "SignIn":
+        Html.RenderPartial("_Partial/_PartialSignin");
+        break;
+    default:
+        {
+            <div class="container text-center my-5 pt-5 pb-4">
+                <h1 class="display-3 text-white mb-3 animated slideInDown">@ViewBag.pages</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center text-uppercase">
+                        <li class="breadcrumb-item"><a href="~/Home/">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                        <li class="breadcrumb-item text-white active" aria-current="page">@ViewBag.pages</li>
+                    </ol>
+                </nav>
+            </div>
+            break;
+        }
+
+}
+
