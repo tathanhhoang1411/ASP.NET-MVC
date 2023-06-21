@@ -54,10 +54,9 @@ namespace WEB2.Controllers
             catch (Exception ex)
             {
                 throw ex;
+               
             }
-
         }
-          
 
     }
 }

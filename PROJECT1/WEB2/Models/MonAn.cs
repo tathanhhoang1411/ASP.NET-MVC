@@ -22,6 +22,7 @@ namespace WEB2.Models
         public int IdLoaiMonAn { get; set; }
         public string SDTTaiKhoan { get; set; }
         public int TrangThai { get; set; }
+        public int SoLuong { get; set; }
     
         public virtual TaiKhoan TaiKhoan { get; set; }
     }

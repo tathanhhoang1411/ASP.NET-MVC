@@ -21,6 +21,7 @@
     <Property Name="SDTTaiKhoan" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="TrangThai" Type="Int32" Nullable="false" />
     <NavigationProperty Name="TaiKhoan" Relationship="Self.FK__MonAn__SDTTaiKho__286302EC" FromRole="MonAn" ToRole="TaiKhoan" />
+    <Property Name="SoLuong" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="TaiKhoan">
     <Key>

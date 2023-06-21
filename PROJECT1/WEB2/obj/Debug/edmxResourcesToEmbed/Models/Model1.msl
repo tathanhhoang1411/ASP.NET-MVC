@@ -13,6 +13,7 @@
     <EntitySetMapping Name="MonAns">
       <EntityTypeMapping TypeName="NhaHangModel.MonAn">
         <MappingFragment StoreEntitySet="MonAn">
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
           <ScalarProperty Name="TenMonAn" ColumnName="TenMonAn" />
           <ScalarProperty Name="IdMonAn" ColumnName="IdMonAn" />
           <ScalarProperty Name="MoTa" ColumnName="MoTa" />

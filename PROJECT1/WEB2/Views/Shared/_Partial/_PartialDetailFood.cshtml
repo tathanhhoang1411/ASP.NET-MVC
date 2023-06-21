@@ -1,0 +1,21 @@
+﻿@{ 
+    var listmonan = (List<WEB2.Models.MonAn>)ViewBag.listdetailfood;
+}
+                @foreach (var item in listmonan)
+                {
+    <div class="container-xxl  bg-dark hero-header ">
+        <div class="container my-5 py-5">
+            <div class="row align-items-center g-5">
+                    <div  class="col-lg-6 text-center text-lg-end overflow-hidden">
+                        <img style="border-radius:70%;" class="img-fluid" src="@Html.DisplayFor(modelItem => item.AnhMonAn)" alt="">
+                    </div>
+                    <div class="col-lg-6   text-center">
+                        <h1 class="display-3 text-white animated slideInLeft">@Html.DisplayFor(modelItem => item.TenMonAn)</h1>
+                        <p class="text-white animated slideInLeft mb-4 pb-2">  @Html.DisplayFor(modelItem => item.GiaBan)</p>
+                        <p class="text-white animated slideInLeft mb-4 pb-2">  @Html.DisplayFor(modelItem => item.MoTa)</p>
+                        <a href="~/Cart/" class="btn btn-primary mb-3">ADD TO CART</a>
+                    </div>
+            </div>
+        </div>
+    </div>
+                }

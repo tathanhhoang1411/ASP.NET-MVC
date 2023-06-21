@@ -17,6 +17,10 @@ namespace WEB2.Draw
         {
             return db.MonAns.Where(m => m.IdLoaiMonAn ==Id).ToList();
         }
-      
+        public List<MonAn> ListFoodDetail(int Id)
+        {
+            return db.MonAns.Where(m => m.IdMonAn == Id).ToList();
+        }
+
     }
 }
