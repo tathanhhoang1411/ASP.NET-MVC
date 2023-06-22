@@ -14,27 +14,42 @@ namespace WEB2.Controllers
         {
             return View();
         }
+
         public ActionResult XuLySignIn(string SDT, string MatKhau)
         {
-           if(ModelState.IsValid==true)
+            if (SDT!="" && MatKhau != "")/* có điền vào ô  SDT, mat khẩu*/
             {
-                var taikhoan = new TaiKhoanDraw();
-                var listtaikhoan = taikhoan.XuLySignIn(SDT, MatKhau);
-                if (listtaikhoan.Count == 1)
-                {
-                    return RedirectToAction("index", "Menu");
-                }
-                else
-                {
-                    return RedirectToAction("index","SignIn");
-                }
+          
+                    var taikhoan = new TaiKhoanDraw();
+                    var listtaikhoan = taikhoan.XuLySignIn(SDT, MatKhau);
+                    if (listtaikhoan.Count == 1)/* nếu điền đúng TK */
+                    {
+                        return RedirectToAction("index", "Menu");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Nocorrect account or password");
+                        return View("Index");
+                    }
+  
             }
-            else
+            else/* ko điền vào ô  SDT, mật khẩu*/
             {
-                ModelState.AddModelError("", "Fill Form, please!");
-                return View(SDT, MatKhau);
+                ModelState.AddModelError("", "Don't leave fields blank!");
+                if (SDT == "")
+                {
+ 
+                    ModelState.AddModelError("SDT", "Fill in the Phone Number .box");
+           
+                }
+                if (MatKhau == "")
+                {
+
+                    ModelState.AddModelError("MatKhau", "Fill in the Password .box");
+
+                }
+                return View("index");
             }
-         
         }
     }
 }

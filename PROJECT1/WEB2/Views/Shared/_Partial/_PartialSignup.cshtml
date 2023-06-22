@@ -7,7 +7,7 @@
             <div class="col-lg-6 text-center text-lg-start">
                 <div class="row g-3">
 
-                    @using (Html.BeginForm())
+                    @using (Html.BeginForm("XuLySignUp", "SignUp"))
                     {
                         @Html.AntiForgeryToken()
 
@@ -36,8 +36,8 @@
 
                             <div class="form-group p-1">
                                 <div class="col-auto">
-                                    <button type="submit" class="btn btn-primary mb-3">Sign Up</button>
-                                    <a href="~/Contact/">Help?</a>
+                                    <button type="submit" class="btn btn-primary mb-3" style="float: left">Sign Up</button>
+                                    <a href="~/Contact/" >Help?</a>
                                     <a href="~/SignIn/" style="opacity:0.5;float:right" class="btn btn-primary mb-3">Sign In</a>
                                 </div>
                             </div>

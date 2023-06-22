@@ -10,14 +10,15 @@ namespace WEB2.Draw
     public class TaiKhoanDraw
     {
         public NhaHang_Entities1 db = new NhaHang_Entities1();
-        public bool Istrue()
-        {
-            
-            return true;
-        }
+
         public List<TaiKhoan> XuLySignIn(String SDT, string MatKhau)
         {
             return db.TaiKhoans.Where(m => m.SDT == SDT.Trim() && m.MatKhau==MatKhau.Trim()).ToList();
+        }
+        public void XuLySignUp(TaiKhoan taikhoan)
+        {
+            db.TaiKhoans.Add(taikhoan);
+            db.SaveChanges();
         }
     }
 }
