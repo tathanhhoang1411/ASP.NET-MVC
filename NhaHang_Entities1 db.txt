@@ -1,0 +1,1 @@
+NhaHang_Entities1 db=new NhaHang_Entities1();
