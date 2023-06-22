@@ -31,15 +31,15 @@ namespace WEB2.Controllers
                 return false;
             }
         }
-        public ActionResult ListItemFood(int ID)
+        public ActionResult ListItemFood(string  a)
         {
             try
             {
                 var ListCategory = new CategoryDraw();
                 ViewBag.listcategory = ListCategory.ListCategory();
                 var ListMonAn = new MonAnDraw();
-              var listmonan = ListMonAn.ListItemFood(ID);
-                if (IsNotNull(listmonan)==true)
+              var listmonan = ListMonAn.ListItemFood(a.Trim());
+                if (IsNotNull(listmonan)==true) 
                 {
                     ViewBag.listmonan = listmonan;
                     ViewBag.error = "";

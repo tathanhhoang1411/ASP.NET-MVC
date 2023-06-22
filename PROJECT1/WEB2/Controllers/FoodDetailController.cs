@@ -10,7 +10,7 @@ namespace WEB2.Controllers
     public class FoodDetailController : Controller
     {
         // GET: FoodDetail
-        public ActionResult Index(int id)
+        public ActionResult Index(string a)
         {
            
                 try
@@ -18,7 +18,7 @@ namespace WEB2.Controllers
                     var ListCategory = new CategoryDraw();
                     ViewBag.listcategory = ListCategory.ListCategory();
                     var ListMonAn = new MonAnDraw();
-                    var listmonan = ListMonAn.ListFoodDetail(id);
+                    var listmonan = ListMonAn.ListFoodDetail(a.Trim());
                     if (IsNotNull(listmonan) == true)
                     {
                         ViewBag.listdetailfood = listmonan;

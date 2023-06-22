@@ -15,7 +15,7 @@
                 @{ foreach (var item in listcategory)
                     {
                         <li class="nav-item">
-                            <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3 " href="~/Menu/ListItemFood?Id=@item.ID">
+                            <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3 " href="~/Menu/ListItemFood?a=@item.LoaiMonAn">
                                 <!--data-bs-toggle="pill" nằm trong thẻ a-->
                                 <i class="fa fa-coffee fa-2x text-primary"></i>
                                 <div class="ps-3">
@@ -44,11 +44,11 @@
                                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                                 <span>@Html.DisplayFor(modelItem => item.TenMonAn)</span>
-                                                                <span class="text-primary">@Html.DisplayFor(modelItem => item.GiaBan)</span>
+                                                                <span class="text-primary">@String.Format("{0:0,0}", item.GiaBan) VND</span>
                                                             </h5>
                                                        
                                                             <span class="text-primary" style="font-size: 16px; margin-left: auto; border-radius: 5px;padding:4px;">Warehouse: @Html.DisplayFor(modelItem => item.SoLuong)</span>
-                                                            <a href="~/FoodDetail/Index?Id=@item.IdMonAn" class="btn btn-primary w-25 mt-3" style="font-size: 12px;margin-left:auto;">Add to cart</a>
+                                                            <a href="~/FoodDetail/Index?a=@item.TenMonAn" class="btn btn-primary w-25 mt-3" style="font-size: 12px;margin-left:auto;">Add to cart</a>
                                                         </div>
                                                     </div>
                                                 </div>

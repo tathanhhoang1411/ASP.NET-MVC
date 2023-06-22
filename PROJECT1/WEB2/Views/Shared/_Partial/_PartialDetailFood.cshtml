@@ -3,16 +3,26 @@
 }
                 @foreach (var item in listmonan)
                 {
-    <div class="container-xxl  bg-dark hero-header ">
+                    var Dollar = String.Format("{0,0:0.0}", (float)(item.GiaBan / 24000));
+
+
+    <div class="container-xxl bg-dark">
         <div class="container my-5 py-5">
             <div class="row align-items-center g-5">
-                    <div  class="col-lg-6 text-center text-lg-end overflow-hidden">
-                        <img style="border-radius:70%;" class="img-fluid" src="@Html.DisplayFor(modelItem => item.AnhMonAn)" alt="">
+                    <div class="col-lg-6 text-center overflow-hidden">
+                        <img style="border-radius: 50% 0 50% 0; width: 70%; height: 400px; margin: auto; object-fit: contain;" src="@Html.DisplayFor(modelItem => item.AnhMonAn)" alt="">
+                        <div style="display:inline-block;">
+                            <img class="m-2" style=" width: 20%;border-radius: 50% 0 50% 0;height: 80px; margin: auto; object-fit: contain;" src="@Html.DisplayFor(modelItem => item.AnhMonAn)" alt="">
+                            <img class="m-2" style=" width: 20%;border-radius: 50% 0 50% 0; height: 80px; margin: auto; object-fit: contain;" src="@Html.DisplayFor(modelItem => item.AnhMonAn)" alt="">
+                            <img class="m-2" style=" width: 20%;border-radius: 50% 0 50% 0; height: 80px; margin: auto; object-fit: contain;" src="@Html.DisplayFor(modelItem => item.AnhMonAn)" alt="">
+                        </div>
                     </div>
                     <div class="col-lg-6   text-center">
-                        <h1 class="display-3 text-white animated slideInLeft">@Html.DisplayFor(modelItem => item.TenMonAn)</h1>
-                        <p class="text-white animated slideInLeft mb-4 pb-2">  @Html.DisplayFor(modelItem => item.GiaBan)</p>
-                        <p class="text-white animated slideInLeft mb-4 pb-2">  @Html.DisplayFor(modelItem => item.MoTa)</p>
+                        <h1 style="border: 9px dotted  #FEA116;" class="display-3 text-white animated slideInLeft">@Html.DisplayFor(modelItem => item.TenMonAn)</h1>
+                        <p class="text-white animated slideInLeft mb-4 pb-2">  @String.Format("{0:0,0}", item.GiaBan) VND or @Dollar $</p>
+                        <p style="display:inline-block"class="text-white animated slideInLeft ">Buy only as much as you need !</p>
+                        <input name="soluong" type="number" min="0" max="@item.SoLuong" value="1" class=" animated slideInLeft p-1" />
+                        <p class="text-white animated slideInLeft m-4 pb-2">  @Html.DisplayFor(modelItem => item.MoTa)</p>
                         <a href="~/Cart/" class="btn btn-primary mb-3">ADD TO CART</a>
                     </div>
             </div>

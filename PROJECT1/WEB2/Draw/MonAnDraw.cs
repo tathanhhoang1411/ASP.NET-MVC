@@ -13,13 +13,25 @@ namespace WEB2.Draw
           
             return db.MonAns.Where(m => m.TrangThai == 1).ToList();
         }
-        public List<MonAn> ListItemFood(int Id)
+        public List<MonAn> ListItemFood(string loaimonan)
         {
-            return db.MonAns.Where(m => m.IdLoaiMonAn ==Id).ToList();
+            var query = (from monan in db.MonAns
+                         join cate in db.Categories on monan.IdLoaiMonAn equals cate.ID
+                         where cate.LoaiMonAn ==loaimonan
+                         orderby monan.TenMonAn
+                         select monan
+                         ) ;
+            return query.ToList();
         }
-        public List<MonAn> ListFoodDetail(int Id)
+        public List<MonAn> ListFoodDetail(string tenmonan)
         {
-            return db.MonAns.Where(m => m.IdMonAn == Id).ToList();
+            var query = (from monan in db.MonAns
+                         join cate in db.Categories on monan.IdLoaiMonAn equals cate.ID
+                         where monan.TenMonAn ==tenmonan
+                         orderby monan.TenMonAn
+                         select monan
+                        );
+            return query.ToList();
         }
 
     }
