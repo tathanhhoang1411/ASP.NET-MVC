@@ -7,41 +7,50 @@
             <div class="col-lg-6 text-center text-lg-start">
                 <div class="row g-3">
 
-                    @using (Html.BeginForm("XuLySignUp", "SignUp"))
+                    @using (Html.BeginForm("XuLySignUp", "SignUp",FormMethod.Post))
                     {
                         @Html.AntiForgeryToken()
 
-                        <form class="row g-3">
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            <div class="form-group col-auto p-1">
-                                @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control ", @placeholder = "(+84)" } })
-                                @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
-                            </div>
+                    <form class="row g-3">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group col-auto p-1">
+                            <label style="float:left" for="SDT">Your phone number</label>
+                            @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control ", @placeholder = "(+84)", @autocomplete = "off", @autofocus = "", @Id = "SDT" } })
+                            @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
+                        </div>
 
-                            <div class="form-group col-auto p-1">
-                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email@gmail.com" } })
-                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                            </div>
+                        <div class="form-group col-auto p-1">
+                            <label style="float:left" for="email">Email</label>
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "email@gmail.com", @autocomplete = "off", @Id = "email" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger"})
+                        </div>
 
-                            <div class="form-group col-auto p-1">
-                                @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control", @placeholder = "The address where you can get the food" } })
-                                @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
-                            </div>
+                        <div class="form-group col-auto p-1">
+                            <label style="float:left" for="address">Address</label>
+                            @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control", @placeholder = "The address where you can get the food", @autocomplete = "off", @Id = "address" } })
+                            @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger"})
+                        </div>
 
-                            <div class="form-group col-auto p-1">
-                                @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password" } })
-                                @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
-                            </div>
+                        <div class="form-group col-auto p-1">
+                            <label style="float:left" for="pw">Password</label>
+                            @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password", @type = "password", @autocomplete = "off", @Id = "pw" } })
+                         
+                        </div>
 
+                        <div class="form-group col-auto p-1">
+                            <label style="float:left" for="rpw">Re-Enter Password</label>
+                            <input class="form-control" placeholder="Re-enter Password" name="rpw" type="password" autocomplete="off" Id="rpw" />
+                            @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger"})
+                        </div>
 
-                            <div class="form-group p-1">
-                                <div class="col-auto">
-                                    <button type="submit" class="btn btn-primary mb-3" style="float: left">Sign Up</button>
-                                    <a href="~/Contact/" >Help?</a>
-                                    <a href="~/SignIn/" style="opacity:0.5;float:right" class="btn btn-primary mb-3">Sign In</a>
-                                </div>
+                        <div class="form-group p-1">
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary mb-3" style="float: left">Sign Up</button>
+                                <a href="~/Contact/">Help?</a>
+                                <a href="~/SignIn/" style="opacity:0.5;float:right" class="btn btn-primary mb-3">Sign In</a>
                             </div>
-                        </form>
+                        </div>
+                    </form>
                     }
                     @*<div>
             @Html.ActionLink("Back to List", "Index")

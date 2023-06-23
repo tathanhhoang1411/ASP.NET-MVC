@@ -14,7 +14,7 @@ namespace WEB2.Controllers
         {
             return View();
         }
-
+        [HttpPost]
         public ActionResult XuLySignIn(string SDT, string MatKhau)
         {
             if (SDT!="" && MatKhau != "")/* có điền vào ô  SDT, mat khẩu*/
@@ -28,7 +28,7 @@ namespace WEB2.Controllers
                     }
                     else
                     {
-                        ModelState.AddModelError("", "Nocorrect account or password");
+                        ModelState.AddModelError("", "NoCorrect account or password");
                         return View("Index");
                     }
   
