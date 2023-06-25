@@ -11,14 +11,14 @@ namespace WEB2.Draw
         public List<MonAn> ListMonAn()
         {
           
-            return db.MonAns.Where(m => m.TrangThai == 1).ToList();
+            return db.MonAns.Where(m => m.TrangThai == 1).OrderBy(m=>m.TenMonAn).ToList();
         }
         public List<MonAn> ListItemFood(string loaimonan)
         {
             var query = (from monan in db.MonAns
                          join cate in db.Categories on monan.IdLoaiMonAn equals cate.ID
                          where cate.LoaiMonAn ==loaimonan
-                         orderby monan.TenMonAn
+                         orderby monan.TenMonAn 
                          select monan
                          ) ;
             return query.ToList();

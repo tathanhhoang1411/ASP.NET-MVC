@@ -34,6 +34,7 @@
     <Property Name="MatKhau" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="TrangThai" Type="Int32" Nullable="false" />
     <NavigationProperty Name="MonAns" Relationship="Self.FK__MonAn__SDTTaiKho__286302EC" FromRole="TaiKhoan" ToRole="MonAn" />
+    <Property Name="Avatar" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK__MonAn__SDTTaiKho__286302EC">
     <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1" />

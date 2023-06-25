@@ -26,6 +26,7 @@ namespace WEB2.Models
         public byte LoaiTK { get; set; }
         public string MatKhau { get; set; }
         public int TrangThai { get; set; }
+        public string Avatar { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MonAn> MonAns { get; set; }
