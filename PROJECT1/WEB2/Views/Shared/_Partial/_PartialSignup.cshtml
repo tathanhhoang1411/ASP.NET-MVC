@@ -10,7 +10,6 @@
                     @using (Html.BeginForm("XuLySignUp", "SignUp",FormMethod.Post, new { enctype="multipart/form-data" }))
                     {/*new { enctype="multipart/form-data" } tạo để mã hóa ảnh*/
                         @Html.AntiForgeryToken()
-
                     <form class="row g-3">
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <div class="form-group col-auto p-1">
@@ -19,7 +18,7 @@
                             @Html.ValidationMessageFor(model => model.Avatar, "", new { @class = "text-danger" })
 
                         </div>
-                    
+
                         <div class="form-group col-auto p-1">
                             <label style="float:left" for="SDT">Your phone number</label>
                             @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control ", @placeholder = "(+84)", @autocomplete = "off", @autofocus = "", @Id = "SDT" } })

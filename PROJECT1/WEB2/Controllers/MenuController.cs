@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using WEB2.Draw;
 using WEB2.Models;
-
+using PagedList;
 namespace WEB2.Controllers
 {
     public class MenuController : Controller
@@ -13,11 +13,11 @@ namespace WEB2.Controllers
         // GET: Menu
         public ActionResult Index()
         {
+
             var ListCategory = new CategoryDraw();
             ViewBag.listcategory = ListCategory.ListCategory();
             var ListMonAn = new MonAnDraw();
             ViewBag.listmonan = ListMonAn.ListMonAn();
-            
             return View();
         }
         public bool IsNotNull(List<MonAn> ma)

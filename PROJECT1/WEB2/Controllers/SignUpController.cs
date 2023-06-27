@@ -31,13 +31,13 @@ namespace WEB2.Controllers
                     {
                        if(model.DiaChi.Trim().Length>=10)
                         {
-                            if (avatar.ContentLength > 0)/*nghĩa là đã chọn file */
+                            if (avatar.ContentLength > 0) /*nghĩa là đã chọn file */
                             {
                                 model.LoaiTK = 2;/* loại tài khoản bàng 2 thì là tài khoản của khách hàng*/
                                 model.TrangThai = 1;/*trạng thái bằng 1 là tài khoản có thể sử dụng */
                                //Xử lí lưu ảnh 
                                 //B1: Xử lí Lưu file ảnh 
-                                string rootFile = Server.MapPath("/Data");
+                                string rootFile = Server.MapPath("/Data/");//Nơi sẽ được lưu file
                                 string pathFile = rootFile + avatar.FileName;
                                 avatar.SaveAs(pathFile);
                                 //B2: lưu thuộc tính url hình ảnh

@@ -1,8 +1,10 @@
 ﻿
 @{
     var listcategory = (List<WEB2.Models.Category>)ViewBag.listcategory;
-    var listmonan = (List<WEB2.Models.MonAn>)ViewBag.listmonan;
     var erorr = (string)ViewBag.error;
+    var listmonan = (List<WEB2.Models.MonAn>)ViewBag.listmonan;
+
+
 }   <!-- Menu Start -->
 <div class="container-xxl py-5">
     <div class="container">
@@ -34,29 +36,26 @@
                 <div id="tab-1" class="tab-pane fade show p-0 active">
                     <div class="row g-4  ">
 
-                        @{
+                        @{ 
 
                             foreach (var item in listmonan)
                             {
-                                                <div class="col-lg-6 ">
-                                                    <div class="d-flex align-items-center">
-                                                        <img class="flex-shrink-0 img-fluid rounded" src="@Html.DisplayFor(modelItem => item.AnhMonAn)" alt="" style="width: 80px;">
-                                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                                <span>@Html.DisplayFor(modelItem => item.TenMonAn)</span>
-                                                                <span class="text-primary">@String.Format("{0:0,0}", item.GiaBan) VND</span>
-                                                            </h5>
-                                                       
-                                                            <span class="text-primary" style="font-size: 16px; margin-left: auto; border-radius: 5px;padding:4px;">Warehouse: @Html.DisplayFor(modelItem => item.SoLuong)</span>
-                                                            <a href="~/FoodDetail/Index?a=@item.TenMonAn" class="btn btn-primary w-25 mt-3" style="font-size: 12px;margin-left:auto;">Add to cart</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
+
+                                <div class="col-lg-6 ">
+                                    <div class="d-flex align-items-center">
+                                        <img class="flex-shrink-0 img-fluid rounded" src="@Html.DisplayFor(modelItem => item.AnhMonAn)" alt="" style="width: 80px;">
+                                        <div class="w-100 d-flex flex-column text-start ps-4">
+                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                                <span>@Html.DisplayFor(modelItem => item.TenMonAn)</span>
+                                                <span class="text-primary">@String.Format("{0:0,0}", item.GiaBan) VND</span>
+                                            </h5>
+
+                                            <span class="text-primary" style="font-size: 16px; margin-left: auto; border-radius: 5px;padding:4px;">Warehouse: @Html.DisplayFor(modelItem => item.SoLuong)</span>
+                                            <a href="~/FoodDetail/Index?a=@item.TenMonAn" class="btn btn-primary w-25 mt-3" style="font-size: 12px;margin-left:auto;">Add to cart</a>
+                                        </div>
+                                    </div>
+                                </div>
                             }
-
-
-
-
                         }
 
                     </div>
