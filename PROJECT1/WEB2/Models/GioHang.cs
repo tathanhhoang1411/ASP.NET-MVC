@@ -12,26 +12,24 @@ namespace WEB2.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class MonAn
+    public partial class GioHang
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public MonAn()
+        public GioHang()
         {
             this.ChiTietGioHangs = new HashSet<ChiTietGioHang>();
         }
     
-        public string TenMonAn { get; set; }
-        public int IdMonAn { get; set; }
-        public string MoTa { get; set; }
-        public decimal GiaBan { get; set; }
-        public string AnhMonAn { get; set; }
-        public int IdLoaiMonAn { get; set; }
-        public string SDTTaiKhoan { get; set; }
-        public int TrangThai { get; set; }
-        public int SoLuong { get; set; }
+        public int ID { get; set; }
+        public string SDT { get; set; }
+        public decimal TongGia { get; set; }
+        public string GhiChu { get; set; }
+        public System.DateTime NgayTao { get; set; }
+        public System.DateTime ThayDoiCuoiCung { get; set; }
     
-        public virtual TaiKhoan TaiKhoan { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietGioHang> ChiTietGioHangs { get; set; }
+        public virtual TaiKhoan TaiKhoan { get; set; }
+        public virtual TaiKhoan TaiKhoan1 { get; set; }
     }
 }

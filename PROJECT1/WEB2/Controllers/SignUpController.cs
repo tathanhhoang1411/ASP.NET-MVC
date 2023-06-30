@@ -23,6 +23,7 @@ namespace WEB2.Controllers
                 && model.Avatar!=null )/* người dùng có nhập các ô */
             {
                 var taikhoan = new TaiKhoanDraw();
+                var giohang = new GioHangDraw();
                 if (taikhoan.IsNotSDT(model.SDT.Trim()) && model.SDT.Trim().Length==10  && taikhoan.IsNumber(model.SDT.Trim()))
                     /*Nếu không tồn tại SDT này (Nghĩa là không trùng khóa chính), chuỗi dài 10, là chuỗi số*/
                 {
@@ -37,13 +38,22 @@ namespace WEB2.Controllers
                                 model.TrangThai = 1;/*trạng thái bằng 1 là tài khoản có thể sử dụng */
                                //Xử lí lưu ảnh 
                                 //B1: Xử lí Lưu file ảnh 
-                                string rootFile = Server.MapPath("/Data/");//Nơi sẽ được lưu file
+                                string rootFile = Server.MapPath("/Data/Avatar/User/");//Nơi sẽ được lưu file
                                 string pathFile = rootFile + avatar.FileName;
                                 avatar.SaveAs(pathFile);
                                 //B2: lưu thuộc tính url hình ảnh
-                                model.Avatar = "/Data/" + avatar.FileName;
+                                model.Avatar = "/Data/Avatar/User/" + avatar.FileName;
                                 taikhoan.XuLySignUp(model);
-                                return RedirectToAction("index", "Menu");
+                                //khi tạo tài khoản sẽ tạo ngay giỏ hàng của tk đó
+                                GioHang  gh = new GioHang();
+                                gh.SDT = model.SDT;
+                                gh.TongGia = 0;
+                                gh.GhiChu = "";
+                                gh.NgayTao = DateTime.Now;
+                                gh.ThayDoiCuoiCung = DateTime.Now;
+                                giohang.TaoGioHang(gh);
+                              
+                                return RedirectToAction("index", "SignIn");
                             }
                             else
                             {

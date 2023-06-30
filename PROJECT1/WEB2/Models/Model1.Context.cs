@@ -28,5 +28,7 @@ namespace WEB2.Models
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<MonAn> MonAns { get; set; }
         public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
+        public virtual DbSet<ChiTietGioHang> ChiTietGioHangs { get; set; }
+        public virtual DbSet<GioHang> GioHangs { get; set; }
     }
 }

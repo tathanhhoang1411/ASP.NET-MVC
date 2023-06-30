@@ -13,6 +13,29 @@
           <Property Name="LoaiMonAn" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="TrangThai" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="ChiTietGioHang">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_GioHang" Type="int" Nullable="false" />
+          <Property Name="ID_MonAn" Type="int" Nullable="false" />
+          <Property Name="SoLuong" Type="int" Nullable="false" />
+          <Property Name="Gia" Type="money" Nullable="false" />
+          <Property Name="NgayTao" Type="datetime" Nullable="false" />
+          <Property Name="ThayDoiCuoiCung" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GioHang">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SDT" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="TongGia" Type="money" Nullable="false" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="NgayTao" Type="datetime" Nullable="false" />
+          <Property Name="ThayDoiCuoiCung" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="MonAn">
           <Key>
             <PropertyRef Name="IdMonAn" />
@@ -39,6 +62,54 @@
           <Property Name="TrangThai" Type="int" Nullable="false" />
           <Property Name="Avatar" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
+        <Association Name="FK__ChiTietGi__ID_Gi__3E52440B">
+          <End Role="GioHang" Type="Self.GioHang" Multiplicity="1" />
+          <End Role="ChiTietGioHang" Type="Self.ChiTietGioHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GioHang">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ChiTietGioHang">
+              <PropertyRef Name="ID_GioHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChiTietGi__ID_Mo__3F466844">
+          <End Role="MonAn" Type="Self.MonAn" Multiplicity="1" />
+          <End Role="ChiTietGioHang" Type="Self.ChiTietGioHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonAn">
+              <PropertyRef Name="IdMonAn" />
+            </Principal>
+            <Dependent Role="ChiTietGioHang">
+              <PropertyRef Name="ID_MonAn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GioHang__SDT__36B12243">
+          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1" />
+          <End Role="GioHang" Type="Self.GioHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaiKhoan">
+              <PropertyRef Name="SDT" />
+            </Principal>
+            <Dependent Role="GioHang">
+              <PropertyRef Name="SDT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GioHang__SDT__37A5467C">
+          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1" />
+          <End Role="GioHang" Type="Self.GioHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaiKhoan">
+              <PropertyRef Name="SDT" />
+            </Principal>
+            <Dependent Role="GioHang">
+              <PropertyRef Name="SDT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__MonAn__SDTTaiKho__2C3393D0">
           <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1" />
           <End Role="MonAn" Type="Self.MonAn" Multiplicity="*" />
@@ -53,8 +124,26 @@
         </Association>
         <EntityContainer Name="NhaHangModelStoreContainer">
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChiTietGioHang" EntityType="Self.ChiTietGioHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GioHang" EntityType="Self.GioHang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MonAn" EntityType="Self.MonAn" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ChiTietGi__ID_Gi__3E52440B" Association="Self.FK__ChiTietGi__ID_Gi__3E52440B">
+            <End Role="GioHang" EntitySet="GioHang" />
+            <End Role="ChiTietGioHang" EntitySet="ChiTietGioHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChiTietGi__ID_Mo__3F466844" Association="Self.FK__ChiTietGi__ID_Mo__3F466844">
+            <End Role="MonAn" EntitySet="MonAn" />
+            <End Role="ChiTietGioHang" EntitySet="ChiTietGioHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GioHang__SDT__36B12243" Association="Self.FK__GioHang__SDT__36B12243">
+            <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+            <End Role="GioHang" EntitySet="GioHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GioHang__SDT__37A5467C" Association="Self.FK__GioHang__SDT__37A5467C">
+            <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+            <End Role="GioHang" EntitySet="GioHang" />
+          </AssociationSet>
           <AssociationSet Name="FK__MonAn__SDTTaiKho__2C3393D0" Association="Self.FK__MonAn__SDTTaiKho__2C3393D0">
             <End Role="TaiKhoan" EntitySet="TaiKhoan" />
             <End Role="MonAn" EntitySet="MonAn" />
@@ -86,6 +175,7 @@
           <Property Name="TrangThai" Type="Int32" Nullable="false" />
           <NavigationProperty Name="TaiKhoan" Relationship="Self.FK__MonAn__SDTTaiKho__286302EC" FromRole="MonAn" ToRole="TaiKhoan" />
           <Property Name="SoLuong" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ChiTietGioHangs" Relationship="NhaHangModel.FK__ChiTietGi__ID_Mo__3F466844" FromRole="MonAn" ToRole="ChiTietGioHang" />
         </EntityType>
         <EntityType Name="TaiKhoan">
           <Key>
@@ -99,6 +189,8 @@
           <Property Name="TrangThai" Type="Int32" Nullable="false" />
           <NavigationProperty Name="MonAns" Relationship="Self.FK__MonAn__SDTTaiKho__286302EC" FromRole="TaiKhoan" ToRole="MonAn" />
           <Property Name="Avatar" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GioHangs" Relationship="NhaHangModel.FK__GioHang__SDT__36B12243" FromRole="TaiKhoan" ToRole="GioHang" />
+          <NavigationProperty Name="GioHangs1" Relationship="NhaHangModel.FK__GioHang__SDT__37A5467C" FromRole="TaiKhoan" ToRole="GioHang" />
         </EntityType>
         <Association Name="FK__MonAn__SDTTaiKho__286302EC">
           <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1" />
@@ -120,7 +212,101 @@
             <End Role="TaiKhoan" EntitySet="TaiKhoans" />
             <End Role="MonAn" EntitySet="MonAns" />
           </AssociationSet>
+          <EntitySet Name="ChiTietGioHangs" EntityType="NhaHangModel.ChiTietGioHang" />
+          <EntitySet Name="GioHangs" EntityType="NhaHangModel.GioHang" />
+          <AssociationSet Name="FK__ChiTietGi__ID_Gi__3E52440B" Association="NhaHangModel.FK__ChiTietGi__ID_Gi__3E52440B">
+            <End Role="GioHang" EntitySet="GioHangs" />
+            <End Role="ChiTietGioHang" EntitySet="ChiTietGioHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChiTietGi__ID_Mo__3F466844" Association="NhaHangModel.FK__ChiTietGi__ID_Mo__3F466844">
+            <End Role="MonAn" EntitySet="MonAns" />
+            <End Role="ChiTietGioHang" EntitySet="ChiTietGioHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GioHang__SDT__36B12243" Association="NhaHangModel.FK__GioHang__SDT__36B12243">
+            <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+            <End Role="GioHang" EntitySet="GioHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GioHang__SDT__37A5467C" Association="NhaHangModel.FK__GioHang__SDT__37A5467C">
+            <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+            <End Role="GioHang" EntitySet="GioHangs" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="ChiTietGioHang">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_GioHang" Type="Int32" Nullable="false" />
+          <Property Name="ID_MonAn" Type="Int32" Nullable="false" />
+          <Property Name="SoLuong" Type="Int32" Nullable="false" />
+          <Property Name="Gia" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="NgayTao" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ThayDoiCuoiCung" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="GioHang" Relationship="NhaHangModel.FK__ChiTietGi__ID_Gi__3E52440B" FromRole="ChiTietGioHang" ToRole="GioHang" />
+          <NavigationProperty Name="MonAn" Relationship="NhaHangModel.FK__ChiTietGi__ID_Mo__3F466844" FromRole="ChiTietGioHang" ToRole="MonAn" />
+        </EntityType>
+        <EntityType Name="GioHang">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SDT" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TongGia" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="GhiChu" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NgayTao" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ThayDoiCuoiCung" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ChiTietGioHangs" Relationship="NhaHangModel.FK__ChiTietGi__ID_Gi__3E52440B" FromRole="GioHang" ToRole="ChiTietGioHang" />
+          <NavigationProperty Name="TaiKhoan" Relationship="NhaHangModel.FK__GioHang__SDT__36B12243" FromRole="GioHang" ToRole="TaiKhoan" />
+          <NavigationProperty Name="TaiKhoan1" Relationship="NhaHangModel.FK__GioHang__SDT__37A5467C" FromRole="GioHang" ToRole="TaiKhoan" />
+        </EntityType>
+        <Association Name="FK__ChiTietGi__ID_Gi__3E52440B">
+          <End Type="NhaHangModel.GioHang" Role="GioHang" Multiplicity="1" />
+          <End Type="NhaHangModel.ChiTietGioHang" Role="ChiTietGioHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GioHang">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ChiTietGioHang">
+              <PropertyRef Name="ID_GioHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChiTietGi__ID_Mo__3F466844">
+          <End Type="NhaHangModel.MonAn" Role="MonAn" Multiplicity="1" />
+          <End Type="NhaHangModel.ChiTietGioHang" Role="ChiTietGioHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonAn">
+              <PropertyRef Name="IdMonAn" />
+            </Principal>
+            <Dependent Role="ChiTietGioHang">
+              <PropertyRef Name="ID_MonAn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GioHang__SDT__36B12243">
+          <End Type="NhaHangModel.TaiKhoan" Role="TaiKhoan" Multiplicity="1" />
+          <End Type="NhaHangModel.GioHang" Role="GioHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaiKhoan">
+              <PropertyRef Name="SDT" />
+            </Principal>
+            <Dependent Role="GioHang">
+              <PropertyRef Name="SDT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GioHang__SDT__37A5467C">
+          <End Type="NhaHangModel.TaiKhoan" Role="TaiKhoan" Multiplicity="1" />
+          <End Type="NhaHangModel.GioHang" Role="GioHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaiKhoan">
+              <PropertyRef Name="SDT" />
+            </Principal>
+            <Dependent Role="GioHang">
+              <PropertyRef Name="SDT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -161,6 +347,31 @@
                 <ScalarProperty Name="LoaiTK" ColumnName="LoaiTK" />
                 <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
                 <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChiTietGioHangs">
+            <EntityTypeMapping TypeName="NhaHangModel.ChiTietGioHang">
+              <MappingFragment StoreEntitySet="ChiTietGioHang">
+                <ScalarProperty Name="ThayDoiCuoiCung" ColumnName="ThayDoiCuoiCung" />
+                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+                <ScalarProperty Name="Gia" ColumnName="Gia" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="ID_MonAn" ColumnName="ID_MonAn" />
+                <ScalarProperty Name="ID_GioHang" ColumnName="ID_GioHang" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GioHangs">
+            <EntityTypeMapping TypeName="NhaHangModel.GioHang">
+              <MappingFragment StoreEntitySet="GioHang">
+                <ScalarProperty Name="ThayDoiCuoiCung" ColumnName="ThayDoiCuoiCung" />
+                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="TongGia" ColumnName="TongGia" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

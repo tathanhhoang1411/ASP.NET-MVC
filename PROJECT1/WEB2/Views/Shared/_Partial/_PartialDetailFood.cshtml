@@ -23,7 +23,7 @@
                         <p style="display:inline-block"class="text-white animated slideInLeft ">Buy only as much as you need !</p>
                         <input name="soluong" type="number" min="0" max="@item.SoLuong" value="1" class=" animated slideInLeft p-1" />
                         <p class="text-white animated slideInLeft m-4 pb-2">  @Html.DisplayFor(modelItem => item.MoTa)</p>
-                        <a href="~/Cart/" class="btn btn-primary mb-3">ADD TO CART</a>
+                        <a href="~/ShoppingCart/Index?a=@item.SDTTaiKhoan" class="btn btn-primary mb-3">ADD TO CART</a>
                     </div>
             </div>
         </div>
