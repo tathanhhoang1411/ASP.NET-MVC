@@ -18,7 +18,8 @@ namespace WEB2.Controllers
             ViewBag.listcategory = ListCategory.ListCategory();
             var ListMonAn = new MonAnDraw();
             ViewBag.listmonan = ListMonAn.ListMonAn();
-            return View();
+        
+                return View();
         }
         public bool IsNotNull(List<MonAn> ma)
         {

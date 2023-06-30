@@ -12,7 +12,15 @@ namespace WEB2.Controllers
         // GET: SignIn
         public ActionResult Index()
         {
-            return View();
+            if (Session["usr"] != null)//đã đăng nhập
+            {
+                return RedirectToAction("index", "Menu");
+            }
+            else//chưa đăng nhập
+            {
+                return View();
+            }
+         
         }
         [HttpPost]
         public ActionResult XuLySignIn(string SDT, string MatKhau)
@@ -24,6 +32,7 @@ namespace WEB2.Controllers
                     var listtaikhoan = taikhoan.XuLySignIn(SDT, MatKhau);
                     if (listtaikhoan.Count == 1)/* nếu điền đúng TK */
                     {
+                    Session["usr"] = listtaikhoan;
                         return RedirectToAction("index", "Menu");
                     }
                     else

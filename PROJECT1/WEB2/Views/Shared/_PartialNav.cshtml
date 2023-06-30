@@ -25,7 +25,18 @@
                 </div>
                 <a href="~/Contact/" class="nav-item nav-link @Html.Raw(ViewBag.pages == "Contact" ? "active" : "")">Contact</a>
             </div>
-            <a href="~/SignIn/" class="btn btn-primary py-2 px-4">Sign Up/ Sign In</a>
+            <a href="~/SignUp/" class="btn btn-primary py-2 px-4  p-2">SignUp</a>
+
+            @{
+                if (Session["usr"] != null)
+                {
+                    <a href="~/LogOut/" class="btn text-danger">LogOut</a>
+                }
+                else
+                {
+                    <a href="~/SignIn/" class="btn btn-primary py-2 px-4 p-2">SignIn</a>
+                }
+            }
         </div>
     </nav>
 
