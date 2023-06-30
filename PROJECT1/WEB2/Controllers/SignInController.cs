@@ -12,7 +12,7 @@ namespace WEB2.Controllers
         // GET: SignIn
         public ActionResult Index()
         {
-            if (Session["usr"] != null)//đã đăng nhập
+            if (Session["usr"] != null)//đã đăng nhập thi tra ve view menu
             {
                 return RedirectToAction("index", "Menu");
             }
