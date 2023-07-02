@@ -41,8 +41,9 @@
     <EntitySetMapping Name="ChiTietGioHangs">
       <EntityTypeMapping TypeName="NhaHangModel.ChiTietGioHang">
         <MappingFragment StoreEntitySet="ChiTietGioHang">
+          <ScalarProperty Name="NgayDat" ColumnName="NgayDat" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
           <ScalarProperty Name="ThayDoiCuoiCung" ColumnName="ThayDoiCuoiCung" />
-          <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
           <ScalarProperty Name="Gia" ColumnName="Gia" />
           <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
           <ScalarProperty Name="ID_MonAn" ColumnName="ID_MonAn" />
@@ -54,9 +55,7 @@
     <EntitySetMapping Name="GioHangs">
       <EntityTypeMapping TypeName="NhaHangModel.GioHang">
         <MappingFragment StoreEntitySet="GioHang">
-          <ScalarProperty Name="ThayDoiCuoiCung" ColumnName="ThayDoiCuoiCung" />
           <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
-          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
           <ScalarProperty Name="TongGia" ColumnName="TongGia" />
           <ScalarProperty Name="SDT" ColumnName="SDT" />
           <ScalarProperty Name="ID" ColumnName="ID" />

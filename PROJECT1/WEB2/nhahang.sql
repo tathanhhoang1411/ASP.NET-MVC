@@ -1,4 +1,5 @@
-﻿Create database NhaHang
+﻿drop database NhaHang
+Create database NhaHang
 use NhaHang
 /*Món ăn*/
 Create table MonAn
@@ -9,7 +10,7 @@ MoTa nvarchar(255) not null,
 GiaBan money not null,
 AnhMonAn varchar(255) not null,
 IdLoaiMonAn int  not null,
-SDTTaiKhoan nvarchar(255) not null,
+SDTTaiKhoan nvarchar(255) not null,/*Xác định ADmin nào là người đã thêm món ăn */
 SoLuong int not null,
 TrangThai int  not null/*nếu TrangThai=1 thì hiện, =0 thì ẩn*/
 )
@@ -41,7 +42,8 @@ TrangThai int not null,/*nếu TrangThai=1 thì bth , =0 thì khóa */
 Avatar varchar(255) not null
 )
 insert into TaiKhoan values(N'0325793505',N'Hoang@gmail.com',N'132 Nguyễn Hữu Cảnh, Bình Thạnh, TP.HCM',1,'123abc',1,N'https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyJTIwYXNpYW58ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60')
-insert into TaiKhoan values(N'0339646365',N'Hoa@gmail.com',N'132 Nguyễn Hữu Cảnh, Bình Thạnh, TP.HCM',2,'123abc',1,N'https://images.unsplash.com/photo-1569913486515-b74bf7751574?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGF2YXRhciUyMGFzaWFufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60')
+insert into TaiKhoan values(N'0339646365',N'Hoa@gmail.com',N'1/2 Nguyễn Hữu Cảnh, Bình Thạnh, TP.HCM',2,'123abc',1,N'https://images.unsplash.com/photo-1569913486515-b74bf7751574?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGF2YXRhciUyMGFzaWFufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60')
+insert into TaiKhoan values(N'0987545310',N'Khanh@gmail.com',N'48 Phạm Huy Thông,Q.Gò Vấp, TP.HCM',2,'123abc',1,N'https://images.unsplash.com/photo-1569913486515-b74bf7751574?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGF2YXRhciUyMGFzaWFufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60')
 ALTER TABLE MonAn
  ADD FOREIGN KEY (SDTTaiKhoan) REFERENCES TaiKhoan(SDT);
 /* giỏ hàng*/
@@ -49,12 +51,11 @@ create table GioHang(
 ID int IDENTITY(100,1) PRIMARY KEY not null ,
 SDT nvarchar(255) not null,
 TongGia money not null,
-GhiChu nvarchar(255) not null,
 NgayTao datetime not null,
-ThayDoiCuoiCung datetime not null
 )
 
-insert into GioHang values(N'0339646365',60000,N'',N'2023-06-20 9:30:00',N'2023-06-30')
+insert into GioHang values(N'0339646365',60000,N'2023-06-20 9:30:00')
+insert into GioHang values(N'0987545310',30000,N'2022-06-1 9:30:00')
 ALTER TABLE GioHang
  ADD FOREIGN KEY (SDT) REFERENCES TaiKhoan(SDT);
 
@@ -65,13 +66,18 @@ ID_GioHang int  not null ,
 ID_MonAn int  not null,
 SoLuong int not null,
 Gia money not null,
-NgayTao datetime not null,
+GhiChu nvarchar(255) not null,
+NgayDat datetime not null,
 ThayDoiCuoiCung datetime not null
 )
-drop table ChiTietGioHang
+
 ALTER TABLE ChiTietGioHang
  ADD FOREIGN KEY (ID_GioHang) REFERENCES GioHang(ID);
  ALTER TABLE ChiTietGioHang
  ADD FOREIGN KEY (ID_MonAn) REFERENCES MonAn(IdMonAn);
- insert into ChiTietGioHang values (107,113,1,60000,N'2023-06-20 9:30:00',N'2023-06-30')
+ insert into ChiTietGioHang values (100,100,1,60000,N'Đừng quá cay',N'2023-06-20 9:30:00',N'2023-06-30')
+ insert into ChiTietGioHang values (101,104,3,30000,N'Xin hãy giao đến Công ty ABC',N'2023-06-20 9:30:00',N'2023-06-30')
+ insert into ChiTietGioHang values (101,103,1,30000,N'Hãy thêm gia vị đậm đà',N'2023-06-20 9:30:00',N'2023-06-30')
  /**/
+ select*from GioHang
+ delete from GioHang

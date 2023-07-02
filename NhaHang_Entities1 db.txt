@@ -1,1 +1,4 @@
 NhaHang_Entities1 db=new NhaHang_Entities1();
+có 2 user tk 0987545310 mk 123abc
+          tk 0339646365 mk 123abc
+có 1 admin tk 0325793505 mk 123abc

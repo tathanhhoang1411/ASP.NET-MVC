@@ -184,6 +184,7 @@
     <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Controllers\TestimonialController.cs" />
     <Compile Include="Draw\CategoryDraw.cs" />
+    <Compile Include="Draw\ChiTietGioHangDraw.cs" />
     <Compile Include="Draw\GioHangDraw.cs" />
     <Compile Include="Draw\MonAnDraw.cs" />
     <Compile Include="Draw\TaiKhoanDraw.cs" />
@@ -344,6 +345,7 @@
     <Content Include="Views\FoodDetail\Index.cshtml" />
     <Content Include="Views\Shared\_Partial\_PartialDetailFood.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\Shared\_Partial\_PartialCart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

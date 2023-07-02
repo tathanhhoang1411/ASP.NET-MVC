@@ -19,8 +19,9 @@ namespace WEB2.Models
         public int ID_MonAn { get; set; }
         public int SoLuong { get; set; }
         public decimal Gia { get; set; }
-        public System.DateTime NgayTao { get; set; }
         public System.DateTime ThayDoiCuoiCung { get; set; }
+        public string GhiChu { get; set; }
+        public System.DateTime NgayDat { get; set; }
     
         public virtual GioHang GioHang { get; set; }
         public virtual MonAn MonAn { get; set; }

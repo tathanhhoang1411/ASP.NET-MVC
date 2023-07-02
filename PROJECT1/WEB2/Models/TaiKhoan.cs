@@ -19,7 +19,6 @@ namespace WEB2.Models
         {
             this.MonAns = new HashSet<MonAn>();
             this.GioHangs = new HashSet<GioHang>();
-            this.GioHangs1 = new HashSet<GioHang>();
         }
     
         public string SDT { get; set; }
@@ -34,7 +33,5 @@ namespace WEB2.Models
         public virtual ICollection<MonAn> MonAns { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GioHang> GioHangs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<GioHang> GioHangs1 { get; set; }
     }
 }

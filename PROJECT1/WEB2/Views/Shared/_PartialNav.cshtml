@@ -25,16 +25,22 @@
                 </div>
                 <a href="~/Contact/" class="nav-item nav-link @Html.Raw(ViewBag.pages == "Contact" ? "active" : "")">Contact</a>
             </div>
-            <a href="~/SignUp/" class="btn btn-primary py-2 px-4  p-2">SignUp</a>
+
 
             @{
+
                 if (Session["usr"] != null)//đã đăng nhập
                 {
-                    <a href="~/LogOut/XuLyLogOut" class="btn text-danger">LogOut</a>
-                      <a href="~/Cart/" class="btn text-light"><i style="font-size:25px;"class="bi bi-bag-check-fill"></i></a>
+                    string avt = (string)Session["avt"];
+                    string usr = (string)Session["usr"];
+
+                    <a href="" style="float:left;"> <img style=" width: 110%;border-radius:50%;height: 60px; object-fit:contain;text-align:left" src="@Session["avt"]" alt="error" /></a>
+                    <a href="~/LogOut/XuLyLogOut" class="btn text-danger" >LogOut</a>
+                    <a href="~/ShoppingCart/Index?a=@Session["usr"]" class="btn text-light"><i style="font-size:25px;" class="bi bi-bag-check-fill"></i></a>
                 }
                 else// chưa đăng nhập
                 {
+                    <a href="~/SignUp/" class="btn btn-primary py-2 px-4  p-2">SignUp</a>
                     <a href="~/SignIn/" class="btn btn-primary py-2 px-4 p-2">SignIn</a>
                 }
             }

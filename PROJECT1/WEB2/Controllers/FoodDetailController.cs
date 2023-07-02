@@ -22,7 +22,7 @@ namespace WEB2.Controllers
                     if (IsNotNull(listmonan) == true)
                     {
                         ViewBag.listdetailfood = listmonan;
-              
+                   
                     }
                     else
                     {

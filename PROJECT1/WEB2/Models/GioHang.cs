@@ -23,13 +23,10 @@ namespace WEB2.Models
         public int ID { get; set; }
         public string SDT { get; set; }
         public decimal TongGia { get; set; }
-        public string GhiChu { get; set; }
         public System.DateTime NgayTao { get; set; }
-        public System.DateTime ThayDoiCuoiCung { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietGioHang> ChiTietGioHangs { get; set; }
         public virtual TaiKhoan TaiKhoan { get; set; }
-        public virtual TaiKhoan TaiKhoan1 { get; set; }
     }
 }

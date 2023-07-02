@@ -1,37 +1,8 @@
-﻿@model IEnumerable<WEB2.Models.GioHang>
+﻿
 
 @{
-    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/LayoutPage.cshtml";
+    ViewBag.pages = "Cart";
+    Html.RenderPartial("_Partial/_PartialCart");
+
 }
-<div class="container">
-
-    <h2>YOUR SHPPING CART </h2>
-
-
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.TongGia)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.GhiChu)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NgayTao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ThayDoiCuoiCung)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TaiKhoan.Email)
-            </th>
-
-            <th></th>
-        </tr>
-
-   
-
-    </table>
-
-</div>

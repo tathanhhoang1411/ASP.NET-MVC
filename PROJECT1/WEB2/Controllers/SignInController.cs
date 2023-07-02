@@ -32,8 +32,9 @@ namespace WEB2.Controllers
                     var listtaikhoan = taikhoan.XuLySignIn(SDT, MatKhau);
                     if (listtaikhoan.Count == 1)/* nếu điền đúng TK */
                     {
-                    Session["usr"] = listtaikhoan;
-                        return RedirectToAction("index", "Menu");
+                    Session["usr"] = listtaikhoan[0].SDT;
+                    Session["avt"] = listtaikhoan[0].Avatar;
+                    return RedirectToAction("index", "Menu");
                     }
                     else
                     {

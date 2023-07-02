@@ -13,7 +13,7 @@ namespace WEB2.Draw
 
         public List<TaiKhoan> XuLySignIn(String SDT, string MatKhau)
         {
-            return db.TaiKhoans.Where(m => m.SDT == SDT.Trim() && m.MatKhau==MatKhau.Trim()).ToList();
+            return db.TaiKhoans.Where(m => m.SDT == SDT.Trim() && m.MatKhau==MatKhau.Trim() && m.LoaiTK==2).ToList();
         }
         public bool IsNumber(string sdt)
         {

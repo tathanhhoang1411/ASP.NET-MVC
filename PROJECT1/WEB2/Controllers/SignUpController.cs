@@ -45,14 +45,7 @@ namespace WEB2.Controllers
                                 model.Avatar = "/Data/Avatar/User/" + avatar.FileName;
                                 taikhoan.XuLySignUp(model);
                                 //khi tạo tài khoản sẽ tạo ngay giỏ hàng của tk đó
-                                GioHang  gh = new GioHang();
-                                gh.SDT = model.SDT;
-                                gh.TongGia = 0;
-                                gh.GhiChu = "";
-                                gh.NgayTao = DateTime.Now;
-                                gh.ThayDoiCuoiCung = DateTime.Now;
-                                giohang.TaoGioHang(gh);
-                              
+                                giohang.TaoGioHang(model.SDT);
                                 return RedirectToAction("index", "SignIn");
                             }
                             else
