@@ -22,6 +22,7 @@ namespace WEB2.Models
         public System.DateTime ThayDoiCuoiCung { get; set; }
         public string GhiChu { get; set; }
         public System.DateTime NgayDat { get; set; }
+        public int TrangThai { get; set; }
     
         public virtual GioHang GioHang { get; set; }
         public virtual MonAn MonAn { get; set; }

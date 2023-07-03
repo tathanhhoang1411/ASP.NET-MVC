@@ -29,16 +29,20 @@
                 Thời gian đặt món
             </th>
             <th>
-               Thay đổi lần cuối
+                Thay đổi lần cuối
+            </th>
+            <th>
+                Trạng thái hóa đơn
             </th>
         </tr>
+
 
         @{
             foreach (var item in listgiohang)
             {
                 var Dollar = String.Format("{0,0:0.0}", (float)(item.Gia / 24000));
                 <tr>
-                    <td >
+                    <td>
                         @item.MonAn.TenMonAn
                     </td>
                     <td>
@@ -58,6 +62,44 @@
                     </td>
                     <td>
                         @item.ThayDoiCuoiCung
+                    </td>
+
+                    <td class="text-center">
+                        @{
+                            if (@item.TrangThai == 1)//chờ xác nhận
+                            {
+                                <i style="font-size:20px;color:yellow" class="bi bi-hourglass-split"></i>
+                            }
+                            else
+                            {
+                                if (@item.TrangThai == 2)//Đang giao hàng
+                                {
+                                    <i style="font-size:20px;color:olive" class="bi bi-truck"></i>
+                                }
+                                else
+                                {
+                                    if (@item.TrangThai == 3)//nhận hàng
+                                    {
+                                        <i style="font-size:20px;color:olivedrab" class="bi bi-credit-card-fill"></i>
+                                    }
+                                    else
+                                    {
+                                        if (@item.TrangThai == 4)//Đơn hàng hoàn tất
+                                        {
+
+
+
+                                            <i style="font-size:20px;" class="bi bi-check-circle-fill text-success"></i>
+
+                                        }
+                                        else//bị hủy đơn
+                                        {
+                                            <i style="font-size:20px" class="bi bi-x-circle-fill text-danger"></i>
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     </td>
                 </tr>
             }

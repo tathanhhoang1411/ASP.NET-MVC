@@ -87,6 +87,7 @@
     <Property Name="GhiChu" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="NgayDat" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="MonAn" Relationship="NhaHangModel.FK__ChiTietGi__ID_Mo__2F10007B" FromRole="ChiTietGioHang" ToRole="MonAn" />
+    <Property Name="TrangThai" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="GioHang">
     <Key>

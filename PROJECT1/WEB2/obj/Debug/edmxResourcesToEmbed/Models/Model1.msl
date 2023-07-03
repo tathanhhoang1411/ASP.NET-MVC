@@ -41,6 +41,7 @@
     <EntitySetMapping Name="ChiTietGioHangs">
       <EntityTypeMapping TypeName="NhaHangModel.ChiTietGioHang">
         <MappingFragment StoreEntitySet="ChiTietGioHang">
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
           <ScalarProperty Name="NgayDat" ColumnName="NgayDat" />
           <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
           <ScalarProperty Name="ThayDoiCuoiCung" ColumnName="ThayDoiCuoiCung" />

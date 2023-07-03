@@ -20,6 +20,7 @@
     <Property Name="GhiChu" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="NgayDat" Type="datetime" Nullable="false" />
     <Property Name="ThayDoiCuoiCung" Type="datetime" Nullable="false" />
+    <Property Name="TrangThai" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="GioHang">
     <Key>
@@ -56,7 +57,7 @@
     <Property Name="TrangThai" Type="int" Nullable="false" />
     <Property Name="Avatar" Type="varchar" MaxLength="255" Nullable="false" />
   </EntityType>
-  <Association Name="FK__ChiTietGi__ID_Gi__2E1BDC42">
+  <Association Name="FK__ChiTietGi__ID_Gi__33D4B598">
     <End Role="GioHang" Type="Self.GioHang" Multiplicity="1" />
     <End Role="ChiTietGioHang" Type="Self.ChiTietGioHang" Multiplicity="*" />
     <ReferentialConstraint>
@@ -68,7 +69,31 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ChiTietGi__ID_Mo__2F10007B">
+  <Association Name="FK__ChiTietGi__ID_Gi__35BCFE0A">
+    <End Role="GioHang" Type="Self.GioHang" Multiplicity="1" />
+    <End Role="ChiTietGioHang" Type="Self.ChiTietGioHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GioHang">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChiTietGioHang">
+        <PropertyRef Name="ID_GioHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietGi__ID_Mo__34C8D9D1">
+    <End Role="MonAn" Type="Self.MonAn" Multiplicity="1" />
+    <End Role="ChiTietGioHang" Type="Self.ChiTietGioHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MonAn">
+        <PropertyRef Name="IdMonAn" />
+      </Principal>
+      <Dependent Role="ChiTietGioHang">
+        <PropertyRef Name="ID_MonAn" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietGi__ID_Mo__36B12243">
     <End Role="MonAn" Type="Self.MonAn" Multiplicity="1" />
     <End Role="ChiTietGioHang" Type="Self.ChiTietGioHang" Multiplicity="*" />
     <ReferentialConstraint>
@@ -110,11 +135,19 @@
     <EntitySet Name="GioHang" EntityType="Self.GioHang" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MonAn" EntityType="Self.MonAn" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__ChiTietGi__ID_Gi__2E1BDC42" Association="Self.FK__ChiTietGi__ID_Gi__2E1BDC42">
+    <AssociationSet Name="FK__ChiTietGi__ID_Gi__33D4B598" Association="Self.FK__ChiTietGi__ID_Gi__33D4B598">
       <End Role="GioHang" EntitySet="GioHang" />
       <End Role="ChiTietGioHang" EntitySet="ChiTietGioHang" />
     </AssociationSet>
-    <AssociationSet Name="FK__ChiTietGi__ID_Mo__2F10007B" Association="Self.FK__ChiTietGi__ID_Mo__2F10007B">
+    <AssociationSet Name="FK__ChiTietGi__ID_Gi__35BCFE0A" Association="Self.FK__ChiTietGi__ID_Gi__35BCFE0A">
+      <End Role="GioHang" EntitySet="GioHang" />
+      <End Role="ChiTietGioHang" EntitySet="ChiTietGioHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietGi__ID_Mo__34C8D9D1" Association="Self.FK__ChiTietGi__ID_Mo__34C8D9D1">
+      <End Role="MonAn" EntitySet="MonAn" />
+      <End Role="ChiTietGioHang" EntitySet="ChiTietGioHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietGi__ID_Mo__36B12243" Association="Self.FK__ChiTietGi__ID_Mo__36B12243">
       <End Role="MonAn" EntitySet="MonAn" />
       <End Role="ChiTietGioHang" EntitySet="ChiTietGioHang" />
     </AssociationSet>
