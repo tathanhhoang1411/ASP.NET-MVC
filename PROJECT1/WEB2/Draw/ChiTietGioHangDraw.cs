@@ -10,6 +10,7 @@ namespace WEB2.Draw
         NhaHang_Entities1 db = new NhaHang_Entities1();
         public List<ChiTietGioHang> ListChiTietGioHang( string  sdt)
         {
+            
             var query =
 
                              (from ctgh in db.ChiTietGioHangs

@@ -16,7 +16,8 @@ namespace WEB2.Controllers
         public ActionResult XuLyLogOut()
         {
             Session["usr"] = null;// khi người dùng bấm logout sẽ gọi đến method XuLyLogOut và xóa session
-            return RedirectToAction("index", "Home");
+            Session["avt"] = null;
+            return RedirectToAction("index", "SignIn");
         }
 
     }

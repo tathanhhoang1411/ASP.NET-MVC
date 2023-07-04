@@ -14,7 +14,7 @@ namespace WEB2.Draw
         }
         public List<MonAn> ListItemFood(string loaimonan)
         {
-
+        
             var query = (from monan in db.MonAns
                          join cate in db.Categories on monan.IdLoaiMonAn equals cate.ID
                          where cate.LoaiMonAn ==loaimonan
@@ -34,6 +34,6 @@ namespace WEB2.Draw
             return query.ToList();
         }
 
-
+    
     }
 }

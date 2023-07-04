@@ -35,8 +35,8 @@
                     string usr = (string)Session["usr"];
 
                     <a href="" style="float:left;"> <img style=" width: 100%;border-radius:50%;height: 60px; object-fit:contain;text-align:left" src="@Session["avt"]" alt="error" /></a>
-                    <a href="~/LogOut/XuLyLogOut" class="btn text-danger" >LogOut</a>
-                    <a href="~/ShoppingCart/Index?a=@Session["usr"]" class="btn text-light"><i style="font-size:25px;" class="bi bi-bag-check-fill"></i></a>
+                    <a href="~/LogOut/XuLyLogOut" class="btn text-danger" style="font-size:14px;font-weight:900" >LogOut</a>
+                    <a href="~/ShoppingCart/BySDT?a=@Session["usr"]" class="btn text-light"><i style="font-size:25px;" class="bi bi-bag-check-fill"></i></a>
                 }
                 else// chưa đăng nhập
                 {

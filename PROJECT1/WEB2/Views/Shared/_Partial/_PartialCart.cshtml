@@ -1,110 +1,120 @@
-﻿@{ 
-    var listgiohang= (List<WEB2.Models.ChiTietGioHang>)ViewBag.listgiohang;
-}
-<div class="container">
+﻿<div class="container">
 
-    <h2 class="text-center">WELLCOME TO YOUR SHOPPING CART </h2>
+    <h2 class="text-center text-primary">WELLCOME TO YOUR SHOPPING CART </h2>
 
-
-    <table class="table">
-        <tr>
-
-
-            <th>
-                Tên Món Ăn
-            </th>
-            <th>
-                Ảnh
-            </th>
-            <th>
-                Số Lượng
-            </th>
-            <th>
-                Giá
-            </th>
-            <th>
-                Ghi Chú
-            </th>
-            <th>
-                Thời gian đặt món
-            </th>
-            <th>
-                Thay đổi lần cuối
-            </th>
-            <th>
-                Trạng thái hóa đơn
-            </th>
-        </tr>
-
-
-        @{
-            foreach (var item in listgiohang)
-            {
-                var Dollar = String.Format("{0,0:0.0}", (float)(item.Gia / 24000));
+    @{
+        var listgiohang = (List<WEB2.Models.ChiTietGioHang>)ViewBag.listchitietgiohang;
+        if (listgiohang.Count == 0)
+        {
+        <div class="container text-center">
+                <i style="font-size: 200px; "class="bi bi-clipboard-x text-danger"></i>
+            <h4 class="text-danger">Your cart is empty, please order foods</h4>
+        </div>
+        }
+        else
+        {
+            <table class="table">
                 <tr>
-                    <td>
-                        @item.MonAn.TenMonAn
-                    </td>
-                    <td>
-                        <img style="border-radius: 20px; width: 70%; height: 100px; margin: auto; object-fit:cover" src="@item.MonAn.AnhMonAn" ; alt="404" />
-                    </td>
-                    <td class="text-center">
-                        @item.SoLuong
-                    </td>
-                    <td>
-                        @String.Format("{0:0,0}", item.Gia) VND or @Dollar $
-                    </td>
-                    <td>
-                        @item.GhiChu
-                    </td>
-                    <td>
-                        @item.NgayDat
-                    </td>
-                    <td>
-                        @item.ThayDoiCuoiCung
-                    </td>
 
-                    <td class="text-center">
-                        @{
-                            if (@item.TrangThai == 1)//chờ xác nhận
-                            {
-                                <i style="font-size:20px;color:yellow" class="bi bi-hourglass-split"></i>
-                            }
-                            else
-                            {
-                                if (@item.TrangThai == 2)//Đang giao hàng
-                                {
-                                    <i style="font-size:20px;color:olive" class="bi bi-truck"></i>
-                                }
-                                else
-                                {
-                                    if (@item.TrangThai == 3)//nhận hàng
+
+                    <th>
+                        Tên Món Ăn
+                    </th>
+                    <th>
+                        Ảnh
+                    </th>
+                    <th>
+                        Số Lượng
+                    </th>
+                    <th>
+                        Giá
+                    </th>
+                    <th>
+                        Ghi Chú
+                    </th>
+                    <th>
+                        Thời gian đặt món
+                    </th>
+                    <th>
+                        Thay đổi lần cuối
+                    </th>
+                    <th>
+                        Trạng thái hóa đơn
+                    </th>
+                </tr>
+
+
+                @{
+                    foreach (var item in listgiohang)
+                    {
+                        var Dollar = String.Format("{0,0:0.0}", (float)(item.Gia / 24000));
+                        <tr>
+                            <td>
+                                @item.MonAn.TenMonAn
+                            </td>
+                            <td>
+                                <img style="border-radius: 20px; width: 70%; height: 100px; margin: auto; object-fit:cover" src="@item.MonAn.AnhMonAn" ; alt="404" />
+                            </td>
+                            <td class="text-center">
+                                @item.SoLuong
+                            </td>
+                            <td>
+                                @String.Format("{0:0,0}", item.Gia) VND or @Dollar $
+                            </td>
+                            <td>
+                                @item.GhiChu
+                            </td>
+                            <td>
+                                @item.NgayDat
+                            </td>
+                            <td>
+                                @item.ThayDoiCuoiCung
+                            </td>
+
+                            <td class="text-center">
+                                @{
+                                    if (@item.TrangThai == 1)//chờ xác nhận
                                     {
-                                        <i style="font-size:20px;color:olivedrab" class="bi bi-credit-card-fill"></i>
+                                        <i style="font-size:20px;color:yellow" class="bi bi-hourglass-split"></i>
                                     }
                                     else
                                     {
-                                        if (@item.TrangThai == 4)//Đơn hàng hoàn tất
+                                        if (@item.TrangThai == 2)//Đang giao hàng
                                         {
-
-
-
-                                            <i style="font-size:20px;" class="bi bi-check-circle-fill text-success"></i>
-
+                                            <i style="font-size:20px;color:olive" class="bi bi-truck"></i>
                                         }
-                                        else//bị hủy đơn
+                                        else
                                         {
-                                            <i style="font-size:20px" class="bi bi-x-circle-fill text-danger"></i>
+                                            if (@item.TrangThai == 3)//nhận hàng
+                                            {
+                                                <i style="font-size:20px;color:olivedrab" class="bi bi-credit-card-fill"></i>
+                                            }
+                                            else
+                                            {
+                                                if (@item.TrangThai == 4)//Đơn hàng hoàn tất
+                                                {
+
+
+
+                                                    <i style="font-size:20px;" class="bi bi-check-circle-fill text-success"></i>
+
+                                                }
+                                                else//bị hủy đơn
+                                                {
+                                                    <i style="font-size:20px" class="bi bi-x-circle-fill text-danger"></i>
+                                                }
+                                            }
                                         }
                                     }
                                 }
-                            }
-                        }
-                    </td>
-                </tr>
-            }
-        }
+                            </td>
+                        </tr>
+                    }
+                }
 
-    </table>
+            </table>
+        }
+    }
+
 
 </div>

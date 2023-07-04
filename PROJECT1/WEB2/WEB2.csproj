@@ -344,8 +344,9 @@
     <Content Include="Views\SignIn\Index.cshtml" />
     <Content Include="Views\FoodDetail\Index.cshtml" />
     <Content Include="Views\Shared\_Partial\_PartialDetailFood.cshtml" />
-    <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\Shared\_Partial\_PartialCart.cshtml" />
+    <Content Include="Views\ShoppingCart\BySDT.cshtml" />
+    <Content Include="Views\ShoppingCart\ByIDMonAn.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
