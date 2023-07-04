@@ -1,7 +1,7 @@
 ﻿
 @{
     var listcategory = (List<WEB2.Models.Category>)ViewBag.listcategory;
-    var erorr = (string)ViewBag.error;
+    var error = (string)ViewBag.error;
     var listmonan = (List<WEB2.Models.MonAn>)ViewBag.listmonan;
 
 
@@ -14,11 +14,11 @@
             <h1 class="mb-5">Most Popular Items</h1>
         </div>
         <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
-            <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-1">
+            <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-2">
                 @{ foreach (var item in listcategory)
                     {
                         <li class="nav-item">
-                            <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3 " href="~/Menu/ListItemFood?a=@item.LoaiMonAn">
+                            <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3 "  href="~/Menu/ListItemFood?a=@item.LoaiMonAn">
                                 <!--data-bs-toggle="pill" nằm trong thẻ a-->
                                 <i class="fa fa-coffee fa-2x text-primary"></i>
                                 <div class="ps-3">
@@ -30,16 +30,33 @@
                     }
 
                 }
-
+         
             </ul>
-            <h6 class="text-danger">@erorr</h6>
+            <ul class="nav nav-pills  justify-content-end border-bottom pb-2 ">
+                @{using (Html.BeginForm("ListItemFood", "Menu"))
+                    {
+                        @Html.AntiForgeryToken()
+                        <li class="nav-item ">
+
+                            <div class="d-inline-flex">
+                               @Html.TextBox("Search","",new {@class= "form-control p-1 ", @style = "outline:unset;border-radius:5px;color:orange;border:dashed;font-family:'Pacifico';text-align:center;", @placeholder= "Name Foods" })
+                                <button  type="submit"class="btn btn-primary" style="font-size: 12px;margin-left:auto;" >
+                                    <!--data-bs-toggle="pill" nằm trong thẻ a-->
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </div>
+
+                        </li>
+                        }
+                    }
+
+                </ul>
+            <h6 class="text-danger">@error</h6>
             <div class="tab-content">
                 <div id="tab-1" class="tab-pane fade show p-0 active">
                     <div class="row g-4  ">
 
-                        @{
-
-                            foreach (var item in listmonan)
+                        @{foreach (var item in listmonan)
                             {
 
                                 <div class="col-lg-6 ">

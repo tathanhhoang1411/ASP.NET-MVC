@@ -32,23 +32,45 @@ namespace WEB2.Controllers
                 return false;
             }
         }
-        public ActionResult ListItemFood(string  a)
+        public ActionResult ListItemFood(string  a,string search)//a là Tên loại món ăn, search người dùng nhập
         {
             try
             {
-                var ListCategory = new CategoryDraw();
-                ViewBag.listcategory = ListCategory.ListCategory();
-                var ListMonAn = new MonAnDraw();
-              var listmonan = ListMonAn.ListItemFood(a.Trim());
-                if (IsNotNull(listmonan)==true) 
+                if (a!=null)
                 {
-                    ViewBag.listmonan = listmonan;
-                    ViewBag.error = "";
+                    var ListCategory = new CategoryDraw();
+                    ViewBag.listcategory = ListCategory.ListCategory();
+                    var ListMonAn = new MonAnDraw();
+                    var listmonan = ListMonAn.ListItemFoodByCate(a.Trim());
+                    if (IsNotNull(listmonan) == true)
+                    {
+                        ViewBag.listmonan = listmonan;
+                        ViewBag.error = "";
+                    }
+                    else
+                    {
+                        ViewBag.error = "There is no list of dishes you searched for";
+                        ViewBag.listmonan = ListMonAn.ListMonAn();
+                    }
+           
                 }
-                else
+                if (search != null)
                 {
-                    ViewBag.error = "There is no list of dishes you searched for";
-                    ViewBag.listmonan= ListMonAn.ListMonAn();
+                    var ListCategory = new CategoryDraw();
+                    ViewBag.listcategory = ListCategory.ListCategory();
+                    var ListMonAn = new MonAnDraw();
+                    var listmonan = ListMonAn.ListItemFoodBySearch(search.Trim());
+                    if (IsNotNull(listmonan) == true)
+                    {
+                        ViewBag.listmonan = listmonan;
+                        ViewBag.error = "";
+                    }
+                    else
+                    {
+                        ViewBag.error = "There is no list of dishes you searched for";
+                        ViewBag.listmonan = ListMonAn.ListMonAn();
+                    }
+             
                 }
                 return View();
             }
@@ -57,6 +79,10 @@ namespace WEB2.Controllers
                 throw ex;
                
             }
+        }
+        public ActionResult TimMonAn()
+        {
+            return View();
         }
 
     }
